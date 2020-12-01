@@ -2,6 +2,7 @@
   import 'normalize.css';
   import Chart from './Chart.svelte';
   import Nav from './components/Nav.svelte';
+  import Footer from './components/Footer.svelte';
   import { storeYear } from './store';
 </script>
 
@@ -20,4 +21,10 @@
 </div>
 <p id="current">{$storeYear}</p>
 
-<p>출처: <a href="https://data.seoul.go.kr/" rel="noopener noreferrer" target="_blank">서울 열린데이터 광장</a></p>
+<Footer />
+
+<style lang="scss">
+  :global(a) {
+    text-decoration: none;
+  }
+</style>
