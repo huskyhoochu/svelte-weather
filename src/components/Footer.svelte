@@ -8,7 +8,7 @@
       width: 100%;
       left: 0;
       bottom: 0;
-      background-color: #8A9BA8;
+      background-color: #394B59;
 
       &__link {
         margin: 8px 32px;
