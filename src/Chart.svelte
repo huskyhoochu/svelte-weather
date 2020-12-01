@@ -65,7 +65,7 @@
       .attr("x", dimensions.graphWidth / 2)
       .attr("font-size", "20px")
       .attr("text-anchor", "middle")
-      .text("연도");
+      .text("월");
 
     const yLabel = rootGroup
       .append("text")
@@ -78,7 +78,7 @@
 
     const timeLabel = rootGroup
       .append("text")
-      .attr("y", dimensions.graphHeight - 50)
+      .attr("y", dimensions.margin.bottom)
       .attr("x", dimensions.graphWidth - 40)
       .attr("font-size", "40px")
       .attr("opacity", "0.4")

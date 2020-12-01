@@ -12,7 +12,7 @@
             id="myRange"
     />
 </div>
-<p id="current">{$storeYear}</p>
+<p id="current">연도: <strong>{$storeYear}</strong></p>
 
 <style lang="scss">
     .slidecontainer {
@@ -47,5 +47,9 @@
           box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         }
       }
+    }
+
+    #current {
+      text-align: center;
     }
 </style>
