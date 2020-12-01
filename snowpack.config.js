@@ -7,6 +7,7 @@ module.exports = {
   plugins: [
     '@snowpack/plugin-svelte',
     '@snowpack/plugin-dotenv',
+    '@snowpack/plugin-sass',
   ],
   install: [
     /* ... */

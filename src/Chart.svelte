@@ -27,7 +27,9 @@
       .select("#wrapper")
       .append("svg")
       .attr("width", dimensions.width)
-      .attr("height", dimensions.height);
+      .attr("height", dimensions.height)
+      .style('display', 'block')
+      .style('margin', '0 auto')
 
     const rootGroup = svg
       .append("g")
@@ -162,3 +164,8 @@
 
 <div id="wrapper"></div>
 
+<style lang="scss">
+  .svg {
+    display: block;
+  }
+</style>

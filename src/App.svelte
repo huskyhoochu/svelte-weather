@@ -1,9 +1,11 @@
 <script>
+  import 'normalize.css';
   import Chart from './Chart.svelte';
+  import Nav from './components/Nav.svelte';
   import { storeYear } from './store';
 </script>
 
-
+<Nav />
 <Chart />
 
 <div class="slidecontainer">
