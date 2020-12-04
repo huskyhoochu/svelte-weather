@@ -1,8 +1,18 @@
 <script>
   import * as d3 from "d3";
   import { onMount } from "svelte";
-  import { storeYear } from './store';
+  import { storeYear, storeCategory } from './store';
 
+  const categorySwitcher = (category) => {
+    switch (category) {
+      case 'avgTa':
+        return '평균기온(℃)'
+      case 'rain':
+        return '강수량 (mm)'
+      default:
+        return ''
+    }
+  }
   const dimensions = {
     width: window.innerWidth * 0.8,
     height: 600,
@@ -73,8 +83,7 @@
       .attr("x", -200)
       .attr("font-size", "20px")
       .attr("text-anchor", "middle")
-      .attr("transform", "rotate(-90)")
-      .text("강수량 (mm)");
+      .attr("transform", "rotate(-90)");
 
     const timeLabel = rootGroup
       .append("text")
@@ -86,7 +95,6 @@
       .text($storeYear);
 
     async function draw() {
-      let category = "rain";
       const data = await d3.json("/weather_year.json");
 
       // data formatting
@@ -102,16 +110,16 @@
       });
 
       // first render
-      update(data[1961], category);
+      update(data[1961], $storeCategory);
 
       // update every 1s
       d3.interval(() => {
         $storeYear = $storeYear < 2020 ? $storeYear + 1 : 1961;
-        update(data[$storeYear], category);
+        update(data[$storeYear], $storeCategory);
       }, 1000);
 
       $: {
-        update(data[$storeYear], category);
+        update(data[$storeYear], $storeCategory);
       }
     }
 
@@ -121,11 +129,12 @@
 
       // set domain
       xScale.domain(d3.extent(yearData, xAccessor));
-      yScale.domain([0, 1000]);
+      yScale.domain(d3.extent(yearData, yAccessor));
       // axis transition
       xAxis.call(xAxisGenerator);
 
       yAxis.transition().duration(200).call(yAxisGenerator);
+      yLabel.text(categorySwitcher(category));
 
       // line
       const lineGenerator = d3

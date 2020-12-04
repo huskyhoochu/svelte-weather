@@ -1,5 +1,5 @@
 <script>
-    import { storeYear } from "../store";
+    import { storeYear, storeCategory } from "../store";
 </script>
 
 <div class="slidecontainer">
@@ -14,6 +14,15 @@
 </div>
 <p id="current">연도: <strong>{$storeYear}</strong></p>
 
+<div class="button-group">
+    <button type="button" on:click={() => {
+        $storeCategory = 'rain';
+    }}>강수량</button>
+    <button type="button" on:click={() => {
+        $storeCategory = 'avgTa'
+    }}>평균기온</button>
+</div>
+
 <style lang="scss">
     .slidecontainer {
       margin: 0 auto;
@@ -22,7 +31,9 @@
       .slider {
         appearance: none;
         -webkit-appearance: none;
-        width: calc(100% - 32px);
+        display: block;
+        width: 200px;
+        margin: 0 auto;
         padding: 0 16px;
         height: 25px;
         background-color: #CED9E0;
@@ -51,5 +62,28 @@
 
     #current {
       text-align: center;
+    }
+
+    .button-group {
+      width: 200px;
+      margin: 0 auto;
+      text-align: center;
+
+      button {
+        display: inline-block;
+        margin: 0 4px;
+        appearance: none;
+        -webkit-appearance: none;
+        background-color: #CED9E0;
+        border-radius: 5px;
+        border: none;
+        padding: 4px 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+        &:active {
+          box-shadow: none;
+          border: none;
+        }
+      }
     }
 </style>
